@@ -1,8 +1,10 @@
 const path = require('path')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+
 const vueConfig = require('./vue-loader.config')
 
 const isProd = process.env.NODE_ENV === 'production'
+const resolve = dir => path.join(__dirname, '..', dir)
 
 module.exports = {
   devtool: '#source-map',
@@ -16,9 +18,10 @@ module.exports = {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['.js', '.vue'],
     alias: {
-      'src': path.resolve(__dirname, '../src'),
-      'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components')
+      '@': resolve('src'),
+      'src': resolve('src'),
+      'assets': resolve('src/assets'),
+      'components': resolve('src/components')
     }
   },
 
@@ -64,6 +67,10 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader'
       }
     ]
   }

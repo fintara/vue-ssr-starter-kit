@@ -13,14 +13,14 @@ export default {
   methods: {
     ...mapActions([
       'increment',
-      'decrement'
-    ])
+      'decrement',
+    ]),
   },
   computed: {
     ...mapGetters({
-      count: 'getCount'
-    })
-  }
+      count: 'getCount',
+    }),
+  },
 }
 </script>
 

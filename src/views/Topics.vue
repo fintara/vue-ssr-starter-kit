@@ -12,12 +12,12 @@ import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters({
-      topics: 'getTopics'
-    })
+      topics: 'getTopics',
+    }),
   },
 
   asyncData ({ store }) {
     return store.dispatch(`getTopics`)
-  }
+  },
 }
 </script>

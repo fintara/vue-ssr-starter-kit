@@ -12,6 +12,10 @@ module.exports = {
   ],
   // add your custom rules here
   'rules': {
+    'no-unused-vars': 0,
+    'no-multiple-empty-lines': 0,
+    'prefer-promise-reject-errors': 0,
+    'comma-dangle': ['error', 'always-multiline'],
     // allow paren-less arrow functions
     'arrow-parens': 0,
     // allow async-await

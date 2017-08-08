@@ -1,13 +1,17 @@
 const path = require('path')
-// const projectRoot = path.resolve(__dirname, '../')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const vueConfig = require('./vue-loader.config')
+
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   devtool: '#source-map',
+
   entry: {
     app: './src/client-entry.js',
     vendor: ['vue', 'vue-router', 'vuex', 'vuex-router-sync', 'axios']
   },
+
   resolve: {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['.js', '.vue'],
@@ -23,6 +27,12 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'client-bundle.[chunkhash].js'
   },
+
+  plugins: isProd
+    ? []
+    : [
+      new FriendlyErrorsPlugin()
+    ],
 
   module: {
     rules: [

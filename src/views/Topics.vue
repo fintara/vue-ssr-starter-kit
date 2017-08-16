@@ -11,13 +11,13 @@ import { mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters({
+    ...mapGetters('base', {
       topics: 'getTopics',
     }),
   },
 
   asyncData ({ store }) {
-    return store.dispatch(`getTopics`)
+    return store.dispatch(`base/getTopics`)
   },
 }
 </script>

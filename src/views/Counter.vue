@@ -11,13 +11,13 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   methods: {
-    ...mapActions([
+    ...mapActions('base', [
       'increment',
       'decrement',
     ]),
   },
   computed: {
-    ...mapGetters({
+    ...mapGetters('base', {
       count: 'getCount',
     }),
   },
